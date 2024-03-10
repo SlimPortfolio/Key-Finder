@@ -1,40 +1,67 @@
 export default function KeyCalculator() {
   const data = [
     {
-      ID: 1,
-      SongName: "Blessed Be Your Name",
-      LowNote: "C4",
-      HighNote: "G4",
+      id: 1,
+      songName: "Blessed Be Your Name",
+      lowNote: "A#3",
+      highNote: "C#5",
+      originalKey: "G#",
     },
     {
-      ID: 2,
-      SongName: "Amazing Grace (My Chains Are Gone)",
-      LowNote: "C4",
-      HighNote: "E5",
+      id: 2,
+      songName: "Amazing Grace (My Chains Are Gone)",
+      lowNote: "D4",
+      highNote: "G5",
+      originalKey: "G",
     },
-    {
-      ID: 3,
-      SongName: "Hymn of Heaven",
-      LowNote: "A3",
-      HighNote: "E5",
-    },
-    {
-      ID: 4,
-      SongName: "How Great is Our God",
-      LowNote: "B3",
-      HighNote: "G4",
-    },
-    {
-      ID: 5,
-      SongName: "How He Loves",
-      LowNote: "C4",
-      HighNote: "E5",
-    },
+    // {
+    //   id: 3,
+    //   songName: "God, You're So Good",
+    //   lowNote: "A3",
+    //   highNote: "E5",
+    //   originalKey: "A#",
+    // },
+    // {
+    //   id: 4,
+    //   songName: "Hymn of Heaven",
+    //   lowNote: "B3",
+    //   highNote: "G4",
+    //   originalKey: "",
+    // },
+    // {
+    //   id: 5,
+    //   songName: "How He Loves",
+    //   lowNote: "C4",
+    //   highNote: "E5",
+    //   originalKey: "",
+    // },
   ];
 
   const userData = [
     {
-      Name: "Steven Lim",
+      name: "Steven Lim",
+      highNote: "E5",
+      lowNote: "A3",
+    },
+    {
+      name: "David Shiu",
+      highNote: "C#5",
+      lowNote: "F3",
+    },
+    {
+      name: "Jeremy Lim",
+      highNote: "",
+      lowNote: "",
+    },
+    {
+      name: "Johnny Wang",
+      highNote: "E5",
+      lowNote: "F3",
+    },
+    {
+      name: "David Jante",
+      highNote: "",
+      lowNote: "",
     },
   ];
 
@@ -91,14 +118,14 @@ export default function KeyCalculator() {
     return result;
   };
   let originalSong = {
-    originalKey: "A",
+    originalKey: "D",
     lowNote: "A3",
-    highNote: "C#5",
+    highNote: "D6",
   };
 
   let vocalist1 = {
-    lowNote: "B3",
-    highNote: "E5",
+    lowNote: "C3",
+    highNote: "B5",
   };
 
   let keySong = originalSong.originalKey;
@@ -117,7 +144,7 @@ export default function KeyCalculator() {
       return "Song is Unsingable";
     }
     let newKey = keyDictionary.get(originalKey) + highCalculation;
-    console.log("newk is", newKey);
+    // console.log("newk is", newKey);
     newKey = ((newKey % 12) + 12) % 12;
     return "New Value is Key of " + valueDictionary.get(newKey);
   };
@@ -128,6 +155,33 @@ export default function KeyCalculator() {
       <h1>Ideal Vocal Key Calculator</h1>
       <p>Range of the Original Song is {rangeSong}</p>
       <p>Range of the Vocalist is {rangeVocalist}</p>
+      <form>
+        <label>Choose Your Song</label>
+        <select id="songName">
+          <option>Select Your Song</option>
+          {data.map((song) => (
+            <option>{song.songName}</option>
+          ))}
+        </select>
+        <br></br>
+        <label>Choose Your Vocalist</label>
+        <select id="vocalistName">
+          <option>Select Your Vocalist</option>
+          {userData.map((vocalist) => (
+            <option>{vocalist.name}</option>
+          ))}
+        </select>
+        <br></br>
+        <input type="submit" value="Submit"></input>
+      </form>
+
+      <button
+        onClick={() =>
+          console.log(keyCalculation(singable, highCalculation, keySong))
+        }
+      >
+        Click Here
+      </button>
     </div>
   );
 }
