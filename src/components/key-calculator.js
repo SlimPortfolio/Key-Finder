@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 export default function KeyCalculator() {
   const data = [
     {
@@ -150,6 +152,8 @@ export default function KeyCalculator() {
   };
 
   console.log(keyCalculation(singable, highCalculation, keySong));
+
+  const [selected, setSelected] = useState();
   return (
     <div>
       <h1>Ideal Vocal Key Calculator</h1>
@@ -157,10 +161,23 @@ export default function KeyCalculator() {
       <p>Range of the Vocalist is {rangeVocalist}</p>
       <form>
         <label>Choose Your Song</label>
-        <select id="songName">
+        <select
+          id="songName"
+          onChange={(e) => {
+            const c = data?.find((x) => {
+              // x.id === e.target.value;
+              if (x.id == e.target.value) {
+                console.log(x);
+                setSelected(x);
+              }
+            });
+          }}
+        >
           <option>Select Your Song</option>
           {data.map((song) => (
-            <option>{song.songName}</option>
+            <option key={song.id} value={song.id}>
+              {song.songName}
+            </option>
           ))}
         </select>
         <br></br>
@@ -175,13 +192,21 @@ export default function KeyCalculator() {
         <input type="submit" value="Submit"></input>
       </form>
 
-      <button
+      {/* <button
         onClick={() =>
           console.log(keyCalculation(singable, highCalculation, keySong))
         }
       >
         Click Here
-      </button>
+      </button> */}
+
+      {selected ? (
+        <div>
+          <h1>Selected Song is: {selected.songName}</h1>
+          <h1>Selected Vocalist is: </h1>
+          <h1>Selected Object is: {JSON.stringify(selected)}</h1>
+        </div>
+      ) : null}
     </div>
   );
 }
