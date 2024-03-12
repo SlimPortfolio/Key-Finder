@@ -147,9 +147,23 @@ export default function KeyCalculator() {
     }
     let newKey = keyDictionary.get(selectedSong.originalKey) + highCalculation;
     newKey = ((newKey % 12) + 12) % 12;
-    return "New Value is Key of " + valueDictionary.get(newKey);
+    return "Key of " + valueDictionary.get(newKey);
   };
 
+  let submitButton = function () {
+    if (
+      selectedSong &&
+      selectedVocalist &&
+      selectedSong.songName != undefined &&
+      selectedVocalist.name != undefined
+    ) {
+      document.querySelector("p.solution").innerHTML =
+        "Recommended Key is: " + keyCalculation();
+    } else {
+      document.querySelector("p.solution").innerHTML =
+        "Please fill out all information for recommended key";
+    }
+  };
   return (
     <div>
       <h1>Ideal Vocal Key Calculator</h1>
@@ -195,26 +209,13 @@ export default function KeyCalculator() {
         ))}
       </select>
       <br></br>
-      <input type="submit" value="Submit"></input>
+      <input
+        type="submit"
+        value="Submit"
+        onClick={() => submitButton()}
+      ></input>
 
-      {selectedSong ? (
-        <div>
-          <h1>Selected Song is: {selectedSong.songName}</h1>
-          <h1>Selected Object is: {JSON.stringify(selectedSong)}</h1>
-        </div>
-      ) : null}
-
-      {selectedVocalist ? (
-        <div>
-          <h1>Selected Vocalist is: {selectedVocalist.name}</h1>
-          <h1>Selected Object is: {JSON.stringify(selectedVocalist)}</h1>
-        </div>
-      ) : null}
-      {selectedSong && selectedVocalist ? (
-        <h1>Recommended Key is: {keyCalculation()}</h1>
-      ) : (
-        <h1>Please fill out all information for recommended key</h1>
-      )}
+      <p className="solution"></p>
     </div>
   );
 }
