@@ -61,6 +61,7 @@ export default function KeyCalculator() {
     },
     {
       id: 4,
+      name: "Jeremy Lim",
       highNote: "",
       lowNote: "",
     },
@@ -130,21 +131,21 @@ export default function KeyCalculator() {
     let result = quantNote(highVocalist) - quantNote(highSong);
     return result;
   };
-  let keySong = selectedSong.originalKey;
-  let highNoteSong = selectedSong.highNote;
-  let lowNoteSong = selectedSong.lowNote;
-  let highNoteVocalist = selectedVocalist.highNote;
-  let lowNoteVocalist = selectedVocalist.lowNote;
-  let rangeSong = gapNote(highNoteSong, lowNoteSong);
-  let rangeVocalist = gapNote(highNoteVocalist, lowNoteVocalist);
-  let singable = isSingable(rangeSong, rangeVocalist);
-  let highCalculation = highGap(highNoteSong, highNoteVocalist);
 
-  let keyCalculation = function (singable, highCalculation, originalKey) {
+  let keyCalculation = function () {
+    let originalKey = selectedSong.originalKey;
+    let highNoteSong = selectedSong.highNote;
+    let lowNoteSong = selectedSong.lowNote;
+    let highNoteVocalist = selectedVocalist.highNote;
+    let lowNoteVocalist = selectedVocalist.lowNote;
+    let rangeSong = gapNote(highNoteSong, lowNoteSong);
+    let rangeVocalist = gapNote(highNoteVocalist, lowNoteVocalist);
+    let singable = isSingable(rangeSong, rangeVocalist);
+    let highCalculation = highGap(highNoteSong, highNoteVocalist);
     if (singable == false) {
       return "Song is Unsingable";
     }
-    let newKey = keyDictionary.get(originalKey) + highCalculation;
+    let newKey = keyDictionary.get(selectedSong.originalKey) + highCalculation;
     newKey = ((newKey % 12) + 12) % 12;
     return "New Value is Key of " + valueDictionary.get(newKey);
   };
@@ -152,53 +153,49 @@ export default function KeyCalculator() {
   return (
     <div>
       <h1>Ideal Vocal Key Calculator</h1>
-      <p>Range of the Original Song is {rangeSong}</p>
-      <p>Range of the Vocalist is {rangeVocalist}</p>
-      <form>
-        <label>Choose Your Song</label>
-        <select
-          id="songName"
-          onChange={(e) => {
-            const c = data?.find((x) => {
-              if (x.id == undefined) return null;
-              else if (x.id == e.target.value) {
-                console.log(x);
-                setSelectedSong(x);
-              }
-            });
-          }}
-        >
-          <option>Select Your Song</option>
-          {data.map((song) => (
-            <option key={song.id} value={song.id}>
-              {song.songName}
-            </option>
-          ))}
-        </select>
-        <br></br>
-        <label>Choose Your Vocalist</label>
-        <select
-          id="vocalistName"
-          onChange={(e) => {
-            const c = userData?.find((x) => {
-              if (x.id == undefined) return null;
-              else if (x.id == e.target.value) {
-                console.log(x);
-                setSelectedVocalist(x);
-              }
-            });
-          }}
-        >
-          <option>Select Your Vocalist</option>
-          {userData.map((vocalist) => (
-            <option key={vocalist.id} value={vocalist.id}>
-              {vocalist.name}
-            </option>
-          ))}
-        </select>
-        <br></br>
-        <input type="submit" value="Submit"></input>
-      </form>
+      <label>Choose Your Song</label>
+      <select
+        id="songName"
+        onChange={(e) => {
+          const c = data?.find((x) => {
+            if (x.id == undefined) return null;
+            else if (x.id == e.target.value) {
+              console.log(x);
+              setSelectedSong(x);
+            }
+          });
+        }}
+      >
+        <option>Select Your Song</option>
+        {data.map((song) => (
+          <option key={song.id} value={song.id}>
+            {song.songName}
+          </option>
+        ))}
+      </select>
+      <br></br>
+      <label>Choose Your Vocalist</label>
+      <select
+        id="vocalistName"
+        onChange={(e) => {
+          const c = userData?.find((x) => {
+            if (x.id == undefined) return null;
+            else if (x.id == e.target.value) {
+              console.log(x);
+              setSelectedVocalist(x);
+            }
+          });
+        }}
+      >
+        <option>Select Your Vocalist</option>
+        {userData.map((vocalist) => (
+          <option key={vocalist.id} value={vocalist.id}>
+            {vocalist.name}
+          </option>
+        ))}
+      </select>
+      <br></br>
+      <input type="submit" value="Submit"></input>
 
       {selectedSong ? (
         <div>
@@ -213,9 +210,11 @@ export default function KeyCalculator() {
           <h1>Selected Object is: {JSON.stringify(selectedVocalist)}</h1>
         </div>
       ) : null}
-      <h1>
-        Recommended Key is: {keyCalculation(singable, highCalculation, keySong)}
-      </h1>
+      {selectedSong && selectedVocalist ? (
+        <h1>Recommended Key is: {keyCalculation()}</h1>
+      ) : (
+        <h1>Please fill out all information for recommended key</h1>
+      )}
     </div>
   );
 }
