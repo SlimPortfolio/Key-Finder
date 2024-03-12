@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 export default function KeyCalculator() {
+  //Song Data
   const data = [
     {
       id: 1,
@@ -16,29 +17,29 @@ export default function KeyCalculator() {
       highNote: "G5",
       originalKey: "G",
     },
-    // {
-    //   id: 3,
-    //   songName: "God, You're So Good",
-    //   lowNote: "A3",
-    //   highNote: "E5",
-    //   originalKey: "A#",
-    // },
-    // {
-    //   id: 4,
-    //   songName: "Hymn of Heaven",
-    //   lowNote: "B3",
-    //   highNote: "G4",
-    //   originalKey: "",
-    // },
-    // {
-    //   id: 5,
-    //   songName: "How He Loves",
-    //   lowNote: "C4",
-    //   highNote: "E5",
-    //   originalKey: "",
-    // },
+    {
+      id: 3,
+      songName: "God, You're So Good",
+      lowNote: "G4",
+      highNote: "C6",
+      originalKey: "G",
+    },
+    {
+      id: 4,
+      songName: "Hymn of Heaven",
+      lowNote: "D4",
+      highNote: "G5",
+      originalKey: "D",
+    },
+    {
+      id: 5,
+      songName: "How He Loves",
+      lowNote: "C4",
+      highNote: "E5",
+      originalKey: "",
+    },
   ];
-
+  //Vocalist Data
   const userData = [
     {
       id: 1,
@@ -54,15 +55,14 @@ export default function KeyCalculator() {
     },
     {
       id: 3,
-      name: "Jeremy Lim",
-      highNote: "",
-      lowNote: "",
-    },
-    {
-      id: 4,
       name: "Johnny Wang",
       highNote: "E5",
       lowNote: "F3",
+    },
+    {
+      id: 4,
+      highNote: "",
+      lowNote: "",
     },
     {
       id: 5,
@@ -72,6 +72,7 @@ export default function KeyCalculator() {
     },
   ];
 
+  //Dictionary of Keys and Their Values
   let keyDictionary = new Map();
   keyDictionary.set("C", 0);
   keyDictionary.set("C#", 1);
@@ -86,6 +87,7 @@ export default function KeyCalculator() {
   keyDictionary.set("A#", 10);
   keyDictionary.set("B", 11);
 
+  //Dictionary of values and their keys
   let valueDictionary = new Map();
   valueDictionary.set(0, "C");
   valueDictionary.set(1, "C#");
@@ -100,6 +102,11 @@ export default function KeyCalculator() {
   valueDictionary.set(10, "A#");
   valueDictionary.set(11, "B");
 
+  //selected song state observers
+  const [selectedSong, setSelectedSong] = useState();
+  const [selectedVocalist, setSelectedVocalist] = useState();
+
+  //helper functions
   let quantNote = function (note) {
     let octave = note.charAt(note.length - 1);
     let value =
@@ -112,7 +119,6 @@ export default function KeyCalculator() {
     // return Math.abs(result);
     return result;
   };
-
   let isSingable = function (rSong, rVocalist) {
     if (rSong > rVocalist) {
       return false;
@@ -124,18 +130,6 @@ export default function KeyCalculator() {
     let result = quantNote(highVocalist) - quantNote(highSong);
     return result;
   };
-  let originalSong = {
-    originalKey: "D",
-    lowNote: "A3",
-    highNote: "D6",
-  };
-
-  let vocalist1 = {
-    lowNote: "C3",
-    highNote: "B5",
-  };
-  const [selectedSong, setSelectedSong] = useState();
-  const [selectedVocalist, setSelectedVocalist] = useState();
   let keySong = selectedSong.originalKey;
   let highNoteSong = selectedSong.highNote;
   let lowNoteSong = selectedSong.lowNote;
@@ -154,8 +148,6 @@ export default function KeyCalculator() {
     newKey = ((newKey % 12) + 12) % 12;
     return "New Value is Key of " + valueDictionary.get(newKey);
   };
-
-  console.log(keyCalculation(singable, highCalculation, keySong));
 
   return (
     <div>
@@ -207,14 +199,6 @@ export default function KeyCalculator() {
         <br></br>
         <input type="submit" value="Submit"></input>
       </form>
-
-      {/* <button
-        onClick={() =>
-          console.log(keyCalculation(singable, highCalculation, keySong))
-        }
-      >
-        Click Here
-      </button> */}
 
       {selectedSong ? (
         <div>
