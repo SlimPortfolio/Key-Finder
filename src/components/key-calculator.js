@@ -41,26 +41,31 @@ export default function KeyCalculator() {
 
   const userData = [
     {
+      id: 1,
       name: "Steven Lim",
       highNote: "E5",
       lowNote: "A3",
     },
     {
+      id: 2,
       name: "David Shiu",
       highNote: "C#5",
       lowNote: "F3",
     },
     {
+      id: 3,
       name: "Jeremy Lim",
       highNote: "",
       lowNote: "",
     },
     {
+      id: 4,
       name: "Johnny Wang",
       highNote: "E5",
       lowNote: "F3",
     },
     {
+      id: 5,
       name: "David Jante",
       highNote: "",
       lowNote: "",
@@ -129,31 +134,29 @@ export default function KeyCalculator() {
     lowNote: "C3",
     highNote: "B5",
   };
-
-  let keySong = originalSong.originalKey;
-  let highNoteSong = originalSong.highNote;
-  let lowNoteSong = originalSong.lowNote;
-  let highNoteVocalist = vocalist1.highNote;
-  let lowNoteVocalist = vocalist1.lowNote;
+  const [selectedSong, setSelectedSong] = useState();
+  const [selectedVocalist, setSelectedVocalist] = useState();
+  let keySong = selectedSong.originalKey;
+  let highNoteSong = selectedSong.highNote;
+  let lowNoteSong = selectedSong.lowNote;
+  let highNoteVocalist = selectedVocalist.highNote;
+  let lowNoteVocalist = selectedVocalist.lowNote;
   let rangeSong = gapNote(highNoteSong, lowNoteSong);
   let rangeVocalist = gapNote(highNoteVocalist, lowNoteVocalist);
   let singable = isSingable(rangeSong, rangeVocalist);
   let highCalculation = highGap(highNoteSong, highNoteVocalist);
-  console.log(highNoteSong);
 
   let keyCalculation = function (singable, highCalculation, originalKey) {
     if (singable == false) {
       return "Song is Unsingable";
     }
     let newKey = keyDictionary.get(originalKey) + highCalculation;
-    // console.log("newk is", newKey);
     newKey = ((newKey % 12) + 12) % 12;
     return "New Value is Key of " + valueDictionary.get(newKey);
   };
 
   console.log(keyCalculation(singable, highCalculation, keySong));
 
-  const [selected, setSelected] = useState();
   return (
     <div>
       <h1>Ideal Vocal Key Calculator</h1>
@@ -165,10 +168,10 @@ export default function KeyCalculator() {
           id="songName"
           onChange={(e) => {
             const c = data?.find((x) => {
-              // x.id === e.target.value;
-              if (x.id == e.target.value) {
+              if (x.id == undefined) return null;
+              else if (x.id == e.target.value) {
                 console.log(x);
-                setSelected(x);
+                setSelectedSong(x);
               }
             });
           }}
@@ -182,10 +185,23 @@ export default function KeyCalculator() {
         </select>
         <br></br>
         <label>Choose Your Vocalist</label>
-        <select id="vocalistName">
+        <select
+          id="vocalistName"
+          onChange={(e) => {
+            const c = userData?.find((x) => {
+              if (x.id == undefined) return null;
+              else if (x.id == e.target.value) {
+                console.log(x);
+                setSelectedVocalist(x);
+              }
+            });
+          }}
+        >
           <option>Select Your Vocalist</option>
           {userData.map((vocalist) => (
-            <option>{vocalist.name}</option>
+            <option key={vocalist.id} value={vocalist.id}>
+              {vocalist.name}
+            </option>
           ))}
         </select>
         <br></br>
@@ -200,13 +216,22 @@ export default function KeyCalculator() {
         Click Here
       </button> */}
 
-      {selected ? (
+      {selectedSong ? (
         <div>
-          <h1>Selected Song is: {selected.songName}</h1>
-          <h1>Selected Vocalist is: </h1>
-          <h1>Selected Object is: {JSON.stringify(selected)}</h1>
+          <h1>Selected Song is: {selectedSong.songName}</h1>
+          <h1>Selected Object is: {JSON.stringify(selectedSong)}</h1>
         </div>
       ) : null}
+
+      {selectedVocalist ? (
+        <div>
+          <h1>Selected Vocalist is: {selectedVocalist.name}</h1>
+          <h1>Selected Object is: {JSON.stringify(selectedVocalist)}</h1>
+        </div>
+      ) : null}
+      <h1>
+        Recommended Key is: {keyCalculation(singable, highCalculation, keySong)}
+      </h1>
     </div>
   );
 }
