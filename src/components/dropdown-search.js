@@ -1,7 +1,6 @@
-import "../styles/styles.css";
 import { useState } from "react";
-
-export default function KeyCalculator() {
+import "../styles/styles.css";
+export default function Search() {
   //Song Data
   const data = [
     {
@@ -104,71 +103,34 @@ export default function KeyCalculator() {
   valueDictionary.set(10, "A#");
   valueDictionary.set(11, "B");
 
-  //selected song state observers
-  const [selectedSong, setSelectedSong] = useState();
-  const [selectedVocalist, setSelectedVocalist] = useState();
+  const [input, setInput] = useState(" ");
+  //   const dataSort = data.filter((user) => {
+  //     return (
+  //       user.id &&
+  //       user.songName &&
+  //       user.lowNote &&
+  //       user.highNote &&
+  //       user.originalKey
+  //     );
+  //   });
 
-  //helper functions
-  let quantNote = function (note) {
-    let octave = note.charAt(note.length - 1);
-    let value =
-      octave * 12 +
-      keyDictionary.get(note.substring(0, note.length - 1).toString());
-    return value;
-  };
-  let gapNote = function (note1, note2) {
-    let result = quantNote(note1) - quantNote(note2);
-    // return Math.abs(result);
-    return result;
-  };
-  let isSingable = function (rSong, rVocalist) {
-    if (rSong > rVocalist) {
-      return false;
-    } else {
-      return true;
-    }
-  };
-  let highGap = function (highSong, highVocalist) {
-    let result = quantNote(highVocalist) - quantNote(highSong);
-    return result;
-  };
+  const newData = data.filter((user) => {
+    return (
+      user.id &&
+      user.songName &&
+      user.lowNote &&
+      user.highNote &&
+      user.originalKey
+    );
+  });
 
-  let keyCalculation = function () {
-    let originalKey = selectedSong.originalKey;
-    let highNoteSong = selectedSong.highNote;
-    let lowNoteSong = selectedSong.lowNote;
-    let highNoteVocalist = selectedVocalist.highNote;
-    let lowNoteVocalist = selectedVocalist.lowNote;
-    let rangeSong = gapNote(highNoteSong, lowNoteSong);
-    let rangeVocalist = gapNote(highNoteVocalist, lowNoteVocalist);
-    let singable = isSingable(rangeSong, rangeVocalist);
-    let highCalculation = highGap(highNoteSong, highNoteVocalist);
-    if (singable == false) {
-      return "Song is Unsingable";
-    }
-    let newKey = keyDictionary.get(selectedSong.originalKey) + highCalculation;
-    newKey = ((newKey % 12) + 12) % 12;
-    return "Key of " + valueDictionary.get(newKey);
-  };
-
-  let submitButton = function () {
-    if (
-      selectedSong &&
-      selectedVocalist &&
-      selectedSong.songName != undefined &&
-      selectedVocalist.name != undefined
-    ) {
-      document.querySelector("p.solution").innerHTML =
-        "Recommended Key is: " + keyCalculation();
-    } else {
-      document.querySelector("p.solution").innerHTML =
-        "Please fill out all information for recommended key";
-    }
+  const handleChange = (value) => {
+    setInput(value);
   };
   return (
     <div>
-      <h1>Ideal Vocal Key Calculator</h1>
-      <label>Choose Your Song</label>
+      <h1>Dropdown Search</h1>
+      {/* <label>Choose Your Song</label>
       <select
         id="songName"
         onChange={(e) => {
@@ -177,7 +139,7 @@ export default function KeyCalculator() {
             else if (x.id == e.target.value) {
               console.log(x);
               console.log(e.target);
-              setSelectedSong(x);
+              //   setSelectedSong(x);
             }
           });
         }}
@@ -198,7 +160,7 @@ export default function KeyCalculator() {
             if (x.id == undefined) return null;
             else if (x.id == e.target.value) {
               console.log(x);
-              setSelectedVocalist(x);
+              //   setSelectedVocalist(x);
             }
           });
         }}
@@ -210,11 +172,11 @@ export default function KeyCalculator() {
           </option>
         ))}
       </select>
-      <br></br>
+      <br></br> */}
       <input
-        type="submit"
-        value="Submit"
-        onClick={() => submitButton()}
+        placeholder="Type to search"
+        value={input}
+        onChange={(e) => handleChange(e.target.value)}
       ></input>
 
       <p className="solution"></p>
