@@ -63,8 +63,8 @@ export default function KeyCalculator() {
     {
       id: 4,
       name: "Jeremy Lim",
-      highNote: "",
-      lowNote: "",
+      highNote: "E5",
+      lowNote: "G3",
     },
     {
       id: 5,
@@ -148,7 +148,7 @@ export default function KeyCalculator() {
     }
     let newKey = keyDictionary.get(selectedSong.originalKey) + highCalculation;
     newKey = ((newKey % 12) + 12) % 12;
-    return "Key of " + valueDictionary.get(newKey);
+    return valueDictionary.get(newKey);
   };
 
   let submitButton = function () {
@@ -158,66 +158,77 @@ export default function KeyCalculator() {
       selectedSong.songName != undefined &&
       selectedVocalist.name != undefined
     ) {
-      document.querySelector("p.solution").innerHTML =
-        "Recommended Key is: " + keyCalculation();
+      document.querySelector("span.solution-text").innerHTML =
+        "Recommended Key Is: ";
+      document.querySelector("span.solution").innerHTML = keyCalculation();
+      document.querySelector("p.solution-song").innerHTML =
+        selectedSong.songName;
     } else {
-      document.querySelector("p.solution").innerHTML =
+      document.querySelector("span.solution-text").innerHTML =
         "Please fill out all information for recommended key";
     }
   };
   return (
-    <div>
+    <div className="calculator-container">
       <h1>Ideal Vocal Key Calculator</h1>
-      <label>Choose Your Song</label>
-      <select
-        id="songName"
-        onChange={(e) => {
-          const c = data?.find((x) => {
-            if (x.id == undefined) return null;
-            else if (x.id == e.target.value) {
-              console.log(x);
-              console.log(e.target);
-              setSelectedSong(x);
-            }
-          });
-        }}
-      >
-        <option>Select Your Song</option>
-        {data.map((song) => (
-          <option key={song.id} value={song.id}>
-            {song.songName}
-          </option>
-        ))}
-      </select>
-      <br></br>
-      <label>Choose Your Vocalist</label>
-      <select
-        id="vocalistName"
-        onChange={(e) => {
-          const c = userData?.find((x) => {
-            if (x.id == undefined) return null;
-            else if (x.id == e.target.value) {
-              console.log(x);
-              setSelectedVocalist(x);
-            }
-          });
-        }}
-      >
-        <option>Select Your Vocalist</option>
-        {userData.map((vocalist) => (
-          <option key={vocalist.id} value={vocalist.id}>
-            {vocalist.name}
-          </option>
-        ))}
-      </select>
-      <br></br>
-      <input
-        type="submit"
-        value="Submit"
-        onClick={() => submitButton()}
-      ></input>
+      <p>
+        Please Select a vocalist and a song, then hit the submit button to see
+        the recommended key.
+      </p>
 
-      <p className="solution"></p>
+      <div className="calculator-solution-container">
+        <select
+          className="calculator-dropdown"
+          id="songName"
+          onChange={(e) => {
+            const c = data?.find((x) => {
+              if (x.id == undefined) return null;
+              else if (x.id == e.target.value) {
+                console.log(x);
+                console.log(e.target);
+                setSelectedSong(x);
+              }
+            });
+          }}
+        >
+          <option>Select Your Song</option>
+          {data.map((song) => (
+            <option key={song.id} value={song.id}>
+              {song.songName}
+            </option>
+          ))}
+        </select>
+        <br></br>
+        <select
+          className="calculator-dropdown"
+          id="vocalistName"
+          onChange={(e) => {
+            const c = userData?.find((x) => {
+              if (x.id == undefined) return null;
+              else if (x.id == e.target.value) {
+                console.log(x);
+                setSelectedVocalist(x);
+              }
+            });
+          }}
+        >
+          <option>Select Your Vocalist</option>
+          {userData.map((vocalist) => (
+            <option key={vocalist.id} value={vocalist.id}>
+              {vocalist.name}
+            </option>
+          ))}
+        </select>
+        <br></br>
+        <input
+          type="submit"
+          value="Submit"
+          onClick={() => submitButton()}
+        ></input>
+        <p className="solution-song"></p>
+        <span className="solution-text"></span>
+        <span className="solution"></span>
+      </div>
     </div>
   );
 }

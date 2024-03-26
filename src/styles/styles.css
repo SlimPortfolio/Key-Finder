@@ -60,3 +60,37 @@
   background-color: #96d4c9;
   transition: 0.2s;
 }
+
+.calculator-container {
+  margin: auto;
+  width: 50%;
+  text-align: center;
+}
+
+.calculator-solution-container {
+  border-radius: 10px;
+  background-color: #ececec;
+  margin: auto;
+  width: 50%;
+  height: 100%;
+  padding: 5%;
+}
+
+.solution {
+  color: white;
+  background-color: #ff8c00;
+  padding-bottom: 1px;
+  padding-left: 3px;
+  padding-right: 3px;
+  font-weight: bold;
+  border-radius: 3px;
+  /* vertical-align: middle; */
+}
+
+.solution-song {
+  font-size: 24px;
+}
+
+.calculator-dropdown {
+  width: 250px;
+}
