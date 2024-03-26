@@ -107,6 +107,7 @@ export default function KeyCalculator() {
   //selected song state observers
   const [selectedSong, setSelectedSong] = useState();
   const [selectedVocalist, setSelectedVocalist] = useState();
+  const [submitSuccess, setSubmitSuccess] = useState(false);
 
   //helper functions
   let quantNote = function (note) {
@@ -160,6 +161,9 @@ export default function KeyCalculator() {
     ) {
       document.querySelector("span.solution-text").innerHTML =
         "Recommended Key Is: ";
+      document
+        .querySelector("span.solution")
+        .classList.add("solution-background");
       document.querySelector("span.solution").innerHTML = keyCalculation();
       document.querySelector("p.solution-song").innerHTML =
         selectedSong.songName;
@@ -170,7 +174,7 @@ export default function KeyCalculator() {
   };
   return (
     <div className="calculator-container">
-      <h1>Ideal Vocal Key Calculator</h1>
+      <h1>Key Finder</h1>
       <p>
         Please Select a vocalist and a song, then hit the submit button to see
         the recommended key.
