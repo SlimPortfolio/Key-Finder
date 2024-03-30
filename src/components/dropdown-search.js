@@ -102,7 +102,8 @@ export default function Search() {
   valueDictionary.set(9, "A");
   valueDictionary.set(10, "A#");
   valueDictionary.set(11, "B");
-
+  const [selectedSong, setSelectedSong] = useState();
+  const [selectedVocalist, setSelectedVocalist] = useState();
   const [input, setInput] = useState("");
   //   const dataSort = data.filter((user) => {
   //     return (
@@ -126,6 +127,67 @@ export default function Search() {
 
   const handleChange = (value) => {
     setInput(value);
+  };
+  //helper functions
+  let quantNote = function (note) {
+    let octave = note.charAt(note.length - 1);
+    let value =
+      octave * 12 +
+      keyDictionary.get(note.substring(0, note.length - 1).toString());
+    return value;
+  };
+  let gapNote = function (note1, note2) {
+    let result = quantNote(note1) - quantNote(note2);
+    // return Math.abs(result);
+    return result;
+  };
+  let isSingable = function (rSong, rVocalist) {
+    if (rSong > rVocalist) {
+      return false;
+    } else {
+      return true;
+    }
+  };
+  let highGap = function (highSong, highVocalist) {
+    let result = quantNote(highVocalist) - quantNote(highSong);
+    return result;
+  };
+  let keyCalculation = function () {
+    let originalKey = selectedSong.originalKey;
+    let highNoteSong = selectedSong.highNote;
+    let lowNoteSong = selectedSong.lowNote;
+    let highNoteVocalist = selectedVocalist.highNote;
+    let lowNoteVocalist = selectedVocalist.lowNote;
+    let rangeSong = gapNote(highNoteSong, lowNoteSong);
+    let rangeVocalist = gapNote(highNoteVocalist, lowNoteVocalist);
+    let singable = isSingable(rangeSong, rangeVocalist);
+    let highCalculation = highGap(highNoteSong, highNoteVocalist);
+    if (singable == false) {
+      return "Song is Unsingable";
+    }
+    let newKey = keyDictionary.get(selectedSong.originalKey) + highCalculation;
+    newKey = ((newKey % 12) + 12) % 12;
+    return valueDictionary.get(newKey);
+  };
+  let submitButton = function () {
+    if (
+      selectedSong &&
+      selectedVocalist &&
+      selectedSong.songName != undefined &&
+      selectedVocalist.name != undefined
+    ) {
+      document.querySelector("span.solution-text").innerHTML =
+        "Recommended Key for " + selectedVocalist.name + " Is: ";
+      document
+        .querySelector("span.solution")
+        .classList.add("solution-background");
+      document.querySelector("span.solution").innerHTML = keyCalculation();
+      document.querySelector("p.solution-song").innerHTML =
+        selectedSong.songName;
+    } else {
+      document.querySelector("span.solution-text").innerHTML =
+        "Please fill out all information for recommended key";
+    }
   };
   return (
     <div>
@@ -188,14 +250,69 @@ export default function Search() {
             if (check === -1) {
               return false;
             } else {
-              return true;
+              return true && fullName !== searchTerm;
             }
           })
           .map((item) => (
-            <div> {item.songName}</div>
+            <div
+              onClick={(e) => {
+                setInput(item.songName);
+                const targetId = e.target.getAttribute("value");
+                data.find((x) => {
+                  if (x.id == undefined) {
+                    return null;
+                  } else if (x.id == targetId) {
+                    setSelectedSong(x);
+                    console.log("successful selected song");
+                  }
+                });
+                // const c = data?.find((x) => {
+                //   if (x.id == undefined) {
+                //     console.log("x.id is: ", x.id);
+                //     return null;
+                //   } else if (x.id == e.target.getAttribute("value")) {
+                //     setSelectedSong(x);
+                //     console.log("x.id is: ", x.id);
+                //   }
+                // });
+                console.log("e.target is", e.target.getAttribute("value"));
+                console.log("selected song is: ", selectedSong);
+              }}
+              key={item.id}
+              value={item.id}
+            >
+              {item.songName}
+            </div>
           ))}
       </div>
-
+      <label>Choose Your Vocalist</label>
+      <select
+        id="vocalistName"
+        onChange={(e) => {
+          const c = userData?.find((x) => {
+            if (x.id == undefined) return null;
+            else if (x.id == e.target.value) {
+              console.log(x);
+              setSelectedVocalist(x);
+            }
+          });
+        }}
+      >
+        <option>Select Your Vocalist</option>
+        {userData.map((vocalist) => (
+          <option key={vocalist.id} value={vocalist.id}>
+            {vocalist.name}
+          </option>
+        ))}
+      </select>
+      <input
+        type="submit"
+        value="Submit"
+        onClick={() => submitButton()}
+      ></input>
+      <p className="solution-song"></p>
+      <span className="solution-text"></span>
+      <span className="solution"></span>
       <p className="solution"></p>
     </div>
   );

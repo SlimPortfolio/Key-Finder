@@ -188,8 +188,8 @@ export default function KeyCalculator() {
             const c = data?.find((x) => {
               if (x.id == undefined) return null;
               else if (x.id == e.target.value) {
-                console.log(x);
-                console.log(e.target);
+                console.log("x is ", x);
+                console.log("e.target is", e.target.value);
                 setSelectedSong(x);
               }
             });
