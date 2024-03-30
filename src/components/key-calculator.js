@@ -184,6 +184,7 @@ export default function KeyCalculator() {
           Please Select a vocalist and a song, then hit the submit button to see
           the recommended key.
         </p>
+        <label>Select A Song</label>
         <input
           placeholder="Type to search"
           value={input}
@@ -192,6 +193,15 @@ export default function KeyCalculator() {
         ></input>
         <div className="search-bar-results">
           {data
+            .sort(function (a, b) {
+              if (a.songName < b.songName) {
+                return -1;
+              }
+              if (a.songName > b.songName) {
+                return 1;
+              }
+              return 0;
+            })
             .filter((item) => {
               const searchTerm = input.toLowerCase();
               const fullName = item.songName.toLowerCase();
@@ -224,6 +234,7 @@ export default function KeyCalculator() {
             ))}
         </div>
         <br></br>
+        <label>Select A Vocalist</label>
         <select
           className="calculator-dropdown"
           id="vocalistName"
@@ -246,13 +257,16 @@ export default function KeyCalculator() {
         </select>
         <br></br>
         <input
+          className="submit-button"
           type="submit"
           value="Submit"
           onClick={() => submitButton()}
         ></input>
         <p className="solution-song"></p>
-        <span className="solution-text"></span>
-        <span className="solution"></span>
+        <div>
+          <span className="solution-text"></span>
+          <span className="solution"></span>
+        </div>
       </div>
     </div>
   );
