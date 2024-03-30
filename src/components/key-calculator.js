@@ -172,36 +172,57 @@ export default function KeyCalculator() {
         "Please fill out all information for recommended key";
     }
   };
+  const [input, setInput] = useState("");
+  const handleChange = (value) => {
+    setInput(value);
+  };
   return (
     <div className="calculator-container">
       <h1>Key Finder</h1>
-
       <div className="calculator-solution-container">
         <p>
           Please Select a vocalist and a song, then hit the submit button to see
           the recommended key.
         </p>
-        <select
-          className="calculator-dropdown"
-          id="songName"
-          onChange={(e) => {
-            const c = data?.find((x) => {
-              if (x.id == undefined) return null;
-              else if (x.id == e.target.value) {
-                console.log("x is ", x);
-                console.log("e.target is", e.target.value);
-                setSelectedSong(x);
+        <input
+          placeholder="Type to search"
+          value={input}
+          onChange={(e) => handleChange(e.target.value)}
+          className="search-bar"
+        ></input>
+        <div className="search-bar-results">
+          {data
+            .filter((item) => {
+              const searchTerm = input.toLowerCase();
+              const fullName = item.songName.toLowerCase();
+              const check = fullName.search(searchTerm);
+              if (check === -1) {
+                return false;
+              } else {
+                return true && fullName !== searchTerm;
               }
-            });
-          }}
-        >
-          <option>Select Your Song</option>
-          {data.map((song) => (
-            <option key={song.id} value={song.id}>
-              {song.songName}
-            </option>
-          ))}
-        </select>
+            })
+            .map((item) => (
+              <div
+                onClick={(e) => {
+                  setInput(item.songName);
+                  const targetId = e.target.getAttribute("value");
+                  data.find((x) => {
+                    if (x.id == undefined) {
+                      return null;
+                    } else if (x.id == targetId) {
+                      setSelectedSong(x);
+                      console.log("successful selected song");
+                    }
+                  });
+                }}
+                key={item.id}
+                value={item.id}
+              >
+                {item.songName}
+              </div>
+            ))}
+        </div>
         <br></br>
         <select
           className="calculator-dropdown"
