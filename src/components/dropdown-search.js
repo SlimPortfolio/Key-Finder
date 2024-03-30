@@ -103,7 +103,7 @@ export default function Search() {
   valueDictionary.set(10, "A#");
   valueDictionary.set(11, "B");
 
-  const [input, setInput] = useState(" ");
+  const [input, setInput] = useState("");
   //   const dataSort = data.filter((user) => {
   //     return (
   //       user.id &&
@@ -177,7 +177,24 @@ export default function Search() {
         placeholder="Type to search"
         value={input}
         onChange={(e) => handleChange(e.target.value)}
+        className="search-bar"
       ></input>
+      <div className="search-bar-results">
+        {data
+          .filter((item) => {
+            const searchTerm = input.toLowerCase();
+            const fullName = item.songName.toLowerCase();
+            const check = fullName.search(searchTerm);
+            if (check === -1) {
+              return false;
+            } else {
+              return true;
+            }
+          })
+          .map((item) => (
+            <div> {item.songName}</div>
+          ))}
+      </div>
 
       <p className="solution"></p>
     </div>

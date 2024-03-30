@@ -73,7 +73,10 @@
   margin: auto;
   width: 50%;
   height: 100%;
-  padding: 5%;
+  padding-top: 1%;
+  padding-right: 5%;
+  padding-left: 5%;
+  padding-bottom: 5%;
 }
 
 .solution {
@@ -97,4 +100,14 @@
 
 .calculator-dropdown {
   width: 250px;
+}
+
+.search-bar {
+  width: 200px;
+  box-sizing: border-box;
+}
+
+.search-bar-results {
+  width: 200px;
+  background-color: wheat;
 }

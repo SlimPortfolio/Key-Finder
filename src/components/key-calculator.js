@@ -160,7 +160,7 @@ export default function KeyCalculator() {
       selectedVocalist.name != undefined
     ) {
       document.querySelector("span.solution-text").innerHTML =
-        "Recommended Key Is: ";
+        "Recommended Key for " + selectedVocalist.name + " Is: ";
       document
         .querySelector("span.solution")
         .classList.add("solution-background");
@@ -175,12 +175,12 @@ export default function KeyCalculator() {
   return (
     <div className="calculator-container">
       <h1>Key Finder</h1>
-      <p>
-        Please Select a vocalist and a song, then hit the submit button to see
-        the recommended key.
-      </p>
 
       <div className="calculator-solution-container">
+        <p>
+          Please Select a vocalist and a song, then hit the submit button to see
+          the recommended key.
+        </p>
         <select
           className="calculator-dropdown"
           id="songName"
