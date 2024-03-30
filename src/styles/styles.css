@@ -115,6 +115,14 @@
   background-color: wheat;
   position: relative;
   z-index: 100;
+  display: none;
+}
+
+.search-bar-results-shown {
+  display: block;
+  width: 250px;
+  background-color: wheat;
+  position: relative;
 }
 
 .submit-button {

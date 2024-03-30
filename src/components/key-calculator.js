@@ -39,6 +39,41 @@ export default function KeyCalculator() {
       highNote: "F5",
       originalKey: "C",
     },
+    {
+      id: 6,
+      songName: "Glorious Day",
+      lowNote: "D3",
+      highNote: "F#4",
+      originalKey: "D",
+    },
+    {
+      id: 7,
+      songName: "Happy Day",
+      lowNote: "C3",
+      highNote: "E4",
+      originalKey: "C",
+    },
+    {
+      id: 8,
+      songName: "Praise the King",
+      lowNote: "C3",
+      highNote: "G4",
+      originalKey: "C",
+    },
+    {
+      id: 9,
+      songName: "Living Hope",
+      lowNote: "D#3",
+      highNote: "G4",
+      originalKey: "D#",
+    },
+    {
+      id: 10,
+      songName: "Because He Lives",
+      lowNote: "B2",
+      highNote: "F#4",
+      originalKey: "A",
+    },
   ];
   //Vocalist Data
   const userData = [
@@ -176,6 +211,30 @@ export default function KeyCalculator() {
   const handleChange = (value) => {
     setInput(value);
   };
+  let showOptions = function () {
+    const dropdown = document.querySelector("div.search-bar-results");
+    console.log("function is being run");
+    console.log("dropdown variable is: ", dropdown);
+    if (dropdown == null) return;
+    dropdown.classList.replace(
+      "search-bar-results",
+      "search-bar-results-shown"
+    );
+  };
+  window.addEventListener("click", function (e) {
+    var dropdown = document.querySelector("div.search-bar-results-shown");
+    var input = document.querySelector("input.search-bar");
+    console.log("input is", input);
+    console.log("e.target is: ", e.target);
+    if (input === null || dropdown === null) return;
+
+    if (!input.contains(e.target) && !dropdown.contains(e.target)) {
+      dropdown.classList.replace(
+        "search-bar-results-shown",
+        "search-bar-results"
+      );
+    }
+  });
   return (
     <div className="calculator-container">
       <h1>Key Finder</h1>
@@ -190,6 +249,7 @@ export default function KeyCalculator() {
           value={input}
           onChange={(e) => handleChange(e.target.value)}
           className="search-bar"
+          onClick={showOptions}
         ></input>
         <div className="search-bar-results">
           {data
