@@ -1,6 +1,6 @@
 import "../styles/styles.css";
 import { useState } from "react";
-import SearchSelect from "./search-select-bar";
+import SearchSelect from "./search-select-results";
 import DropdownSelect from "./select-dropdown";
 
 export default function KeyCalculator() {

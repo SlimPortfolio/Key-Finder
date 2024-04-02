@@ -105,15 +105,6 @@ export default function Search() {
   const [selectedSong, setSelectedSong] = useState();
   const [selectedVocalist, setSelectedVocalist] = useState();
   const [input, setInput] = useState("");
-  //   const dataSort = data.filter((user) => {
-  //     return (
-  //       user.id &&
-  //       user.songName &&
-  //       user.lowNote &&
-  //       user.highNote &&
-  //       user.originalKey
-  //     );
-  //   });
 
   const newData = data.filter((user) => {
     return (
