@@ -1,5 +1,7 @@
 import "../styles/styles.css";
 import { useState } from "react";
+import SearchSelect from "./search-select-bar";
+import DropdownSelect from "./select-dropdown";
 
 export default function KeyCalculator() {
   //Song Data
@@ -149,7 +151,10 @@ export default function KeyCalculator() {
   //selected song state observers
   const [selectedSong, setSelectedSong] = useState();
   const [selectedVocalist, setSelectedVocalist] = useState();
-  const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [input, setInput] = useState("");
+  const handleChange = (value) => {
+    setInput(value);
+  };
 
   //helper functions
   let quantNote = function (note) {
@@ -161,7 +166,6 @@ export default function KeyCalculator() {
   };
   let gapNote = function (note1, note2) {
     let result = quantNote(note1) - quantNote(note2);
-    // return Math.abs(result);
     return result;
   };
   let isSingable = function (rSong, rVocalist) {
@@ -177,7 +181,6 @@ export default function KeyCalculator() {
   };
 
   let keyCalculation = function () {
-    let originalKey = selectedSong.originalKey;
     let highNoteSong = selectedSong.highNote;
     let lowNoteSong = selectedSong.lowNote;
     let highNoteVocalist = selectedVocalist.highNote;
@@ -214,14 +217,10 @@ export default function KeyCalculator() {
         "Please fill out all information for recommended key";
     }
   };
-  const [input, setInput] = useState("");
-  const handleChange = (value) => {
-    setInput(value);
-  };
+
+  //Select a Song DropDown Handler
   let showOptions = function () {
     const dropdown = document.querySelector("div.search-bar-results");
-    console.log("function is being run");
-    console.log("dropdown variable is: ", dropdown);
     if (dropdown == null) return;
     dropdown.classList.replace(
       "search-bar-results",
@@ -231,10 +230,7 @@ export default function KeyCalculator() {
   window.addEventListener("click", function (e) {
     var dropdown = document.querySelector("div.search-bar-results-shown");
     var input = document.querySelector("input.search-bar");
-    console.log("input is", input);
-    console.log("e.target is: ", e.target);
     if (input === null || dropdown === null) return;
-
     if (!input.contains(e.target) && !dropdown.contains(e.target)) {
       dropdown.classList.replace(
         "search-bar-results-shown",
@@ -258,73 +254,15 @@ export default function KeyCalculator() {
           className="search-bar"
           onClick={showOptions}
         ></input>
-        <div className="search-bar-results-container">
-          <div className="search-bar-results">
-            {data
-              .sort(function (a, b) {
-                if (a.songName < b.songName) {
-                  return -1;
-                }
-                if (a.songName > b.songName) {
-                  return 1;
-                }
-                return 0;
-              })
-              .filter((item) => {
-                const searchTerm = input.toLowerCase();
-                const fullName = item.songName.toLowerCase();
-                const check = fullName.search(searchTerm);
-                if (check === -1) {
-                  return false;
-                } else {
-                  return true && fullName !== searchTerm;
-                }
-              })
-              .map((item) => (
-                <div
-                  onClick={(e) => {
-                    setInput(item.songName);
-                    const targetId = e.target.getAttribute("value");
-                    data.find((x) => {
-                      if (x.id == undefined) {
-                        return null;
-                      } else if (x.id == targetId) {
-                        setSelectedSong(x);
-                        console.log("successful selected song");
-                      }
-                    });
-                  }}
-                  key={item.id}
-                  value={item.id}
-                  className="search-bar-item"
-                >
-                  {item.songName}
-                </div>
-              ))}
-          </div>
-        </div>
+        <SearchSelect
+          data={data}
+          input={input}
+          setInput={setInput}
+          setSelection={setSelectedSong}
+        />
         <br></br>
         <label>Select A Vocalist</label>
-        <select
-          className="calculator-dropdown"
-          id="vocalistName"
-          onChange={(e) => {
-            const c = userData?.find((x) => {
-              if (x.id == undefined) return null;
-              else if (x.id == e.target.value) {
-                console.log(x);
-                setSelectedVocalist(x);
-              }
-            });
-          }}
-        >
-          <option>Select Your Vocalist</option>
-          {userData.map((vocalist) => (
-            <option key={vocalist.id} value={vocalist.id}>
-              {vocalist.name}
-            </option>
-          ))}
-        </select>
+        <DropdownSelect data={userData} setSelection={setSelectedVocalist} />
         <br></br>
         <input
           className="submit-button"

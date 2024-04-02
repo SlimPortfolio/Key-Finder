@@ -18,7 +18,7 @@ export default function Header() {
         <Link to="/key-finder" className="header-link">
           Add User/Song
         </Link>
-        <Link to="/key-finder" className="header-link">
+        <Link to="/search-bar" className="header-link">
           Vocal Range Test
         </Link>
       </div>
