@@ -57,7 +57,7 @@ export default function KeyCalculator() {
       id: 8,
       songName: "Praise the King",
       lowNote: "C3",
-      highNote: "G4",
+      highNote: "F4",
       originalKey: "C",
     },
     {
@@ -73,6 +73,13 @@ export default function KeyCalculator() {
       lowNote: "B2",
       highNote: "F#4",
       originalKey: "A",
+    },
+    {
+      id: 11,
+      songName: "Forever",
+      lowNote: "G3",
+      highNote: "C5",
+      originalKey: "G",
     },
   ];
   //Vocalist Data
@@ -251,47 +258,50 @@ export default function KeyCalculator() {
           className="search-bar"
           onClick={showOptions}
         ></input>
-        <div className="search-bar-results">
-          {data
-            .sort(function (a, b) {
-              if (a.songName < b.songName) {
-                return -1;
-              }
-              if (a.songName > b.songName) {
-                return 1;
-              }
-              return 0;
-            })
-            .filter((item) => {
-              const searchTerm = input.toLowerCase();
-              const fullName = item.songName.toLowerCase();
-              const check = fullName.search(searchTerm);
-              if (check === -1) {
-                return false;
-              } else {
-                return true && fullName !== searchTerm;
-              }
-            })
-            .map((item) => (
-              <div
-                onClick={(e) => {
-                  setInput(item.songName);
-                  const targetId = e.target.getAttribute("value");
-                  data.find((x) => {
-                    if (x.id == undefined) {
-                      return null;
-                    } else if (x.id == targetId) {
-                      setSelectedSong(x);
-                      console.log("successful selected song");
-                    }
-                  });
-                }}
-                key={item.id}
-                value={item.id}
-              >
-                {item.songName}
-              </div>
-            ))}
+        <div className="search-bar-results-container">
+          <div className="search-bar-results">
+            {data
+              .sort(function (a, b) {
+                if (a.songName < b.songName) {
+                  return -1;
+                }
+                if (a.songName > b.songName) {
+                  return 1;
+                }
+                return 0;
+              })
+              .filter((item) => {
+                const searchTerm = input.toLowerCase();
+                const fullName = item.songName.toLowerCase();
+                const check = fullName.search(searchTerm);
+                if (check === -1) {
+                  return false;
+                } else {
+                  return true && fullName !== searchTerm;
+                }
+              })
+              .map((item) => (
+                <div
+                  onClick={(e) => {
+                    setInput(item.songName);
+                    const targetId = e.target.getAttribute("value");
+                    data.find((x) => {
+                      if (x.id == undefined) {
+                        return null;
+                      } else if (x.id == targetId) {
+                        setSelectedSong(x);
+                        console.log("successful selected song");
+                      }
+                    });
+                  }}
+                  key={item.id}
+                  value={item.id}
+                  className="search-bar-item"
+                >
+                  {item.songName}
+                </div>
+              ))}
+          </div>
         </div>
         <br></br>
         <label>Select A Vocalist</label>

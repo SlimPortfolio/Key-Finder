@@ -121,10 +121,23 @@
 .search-bar-results-shown {
   display: block;
   width: 250px;
-  background-color: wheat;
-  position: relative;
+  background-color: white;
+  position: absolute;
+  top: 0px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+.search-bar-results-container {
+  position: relative;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.search-bar-item:hover {
+  background-color: rgb(207, 207, 207);
+  cursor: pointer;
+}
 .submit-button {
   flex-grow: 0;
   justify-content: center;
