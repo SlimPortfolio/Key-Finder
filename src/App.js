@@ -1,11 +1,10 @@
 import logo from "./logo.svg";
 import KeyCalculator from "./components/key-calculator";
-import Search from "./components/dropdown-search";
-import SearchSelect from "./components/search-select-results";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./components/home";
 import Header from "./components/header";
 import "./styles/styles.css";
+import About from "./components/about";
 function App() {
   return (
     <div>
@@ -14,8 +13,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/key-finder" element={<KeyCalculator />}></Route>
-          <Route path="/search" element={<Search />}></Route>
-          <Route path="/search-bar" element={<SearchSelect />}></Route>
+          <Route path="/about" element={<About />}></Route>
         </Routes>
       </BrowserRouter>
     </div>

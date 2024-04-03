@@ -240,9 +240,9 @@ export default function KeyCalculator() {
   });
   return (
     <div className="calculator-container">
-      <h1>Key Finder</h1>
+      <h1 className="title">Key Finder</h1>
       <div className="calculator-solution-container">
-        <p>
+        <p className="description">
           Please Select a vocalist and a song, then hit the submit button to see
           the recommended key.
         </p>
