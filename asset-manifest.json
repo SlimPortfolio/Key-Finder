@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "//slimportfolio.github.io/Key-Finder/static/css/main.289ab530.css",
-    "main.js": "//slimportfolio.github.io/Key-Finder/static/js/main.e9f59dd9.js",
-    "static/js/453.bc7b6e37.chunk.js": "//slimportfolio.github.io/Key-Finder/static/js/453.bc7b6e37.chunk.js",
-    "static/media/slim-image.jpg": "//slimportfolio.github.io/Key-Finder/static/media/slim-image.664a21f19825be5af2e1.jpg",
-    "static/media/SweetSpot Logo.png": "//slimportfolio.github.io/Key-Finder/static/media/SweetSpot Logo.6837670e5eb6fb7904e3.png",
-    "static/media/SweetSpot-white.png": "//slimportfolio.github.io/Key-Finder/static/media/SweetSpot-white.26ebf8ad6fdb2daa0652.png",
-    "static/media/logo.svg": "//slimportfolio.github.io/Key-Finder/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
-    "index.html": "//slimportfolio.github.io/Key-Finder/index.html",
-    "main.289ab530.css.map": "//slimportfolio.github.io/Key-Finder/static/css/main.289ab530.css.map",
-    "main.e9f59dd9.js.map": "//slimportfolio.github.io/Key-Finder/static/js/main.e9f59dd9.js.map",
-    "453.bc7b6e37.chunk.js.map": "//slimportfolio.github.io/Key-Finder/static/js/453.bc7b6e37.chunk.js.map"
+    "main.css": "/Key-Finder/static/css/main.289ab530.css",
+    "main.js": "/Key-Finder/static/js/main.3393cd0c.js",
+    "static/js/453.bc7b6e37.chunk.js": "/Key-Finder/static/js/453.bc7b6e37.chunk.js",
+    "static/media/slim-image.jpg": "/Key-Finder/static/media/slim-image.664a21f19825be5af2e1.jpg",
+    "static/media/SweetSpot Logo.png": "/Key-Finder/static/media/SweetSpot Logo.6837670e5eb6fb7904e3.png",
+    "static/media/SweetSpot-white.png": "/Key-Finder/static/media/SweetSpot-white.26ebf8ad6fdb2daa0652.png",
+    "static/media/logo.svg": "/Key-Finder/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/Key-Finder/index.html",
+    "main.289ab530.css.map": "/Key-Finder/static/css/main.289ab530.css.map",
+    "main.3393cd0c.js.map": "/Key-Finder/static/js/main.3393cd0c.js.map",
+    "453.bc7b6e37.chunk.js.map": "/Key-Finder/static/js/453.bc7b6e37.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.289ab530.css",
-    "static/js/main.e9f59dd9.js"
+    "static/js/main.3393cd0c.js"
   ]
 }
