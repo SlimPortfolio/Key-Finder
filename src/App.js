@@ -11,9 +11,9 @@ function App() {
       <BrowserRouter>
         <Header />
         <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/key-finder" element={<KeyCalculator />}></Route>
-          <Route path="/about" element={<About />}></Route>
+          <Route path="/Key-Finder/" element={<Home />}></Route>
+          <Route path="/Key-Finder/app" element={<KeyCalculator />}></Route>
+          <Route path="/Key-Finder/about" element={<About />}></Route>
         </Routes>
       </BrowserRouter>
     </div>

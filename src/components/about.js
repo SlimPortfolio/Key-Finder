@@ -25,8 +25,10 @@ export default function About() {
       <p>
         Here's how you can support me! You can support me by emailing any
         thoughts, suggestions, or song requests you'd like to see on this
-        program to stevenylim17@gmail.com. You can also feel free to contact me
-        if this ends up being helpful for you in any way!
+        program to{" "}
+        <a href="mailto:stevenylim17@gmail.com">stevenylim17@gmail.com</a>. You
+        can also feel free to contact me if this ends up being helpful for you
+        in any way!
       </p>
     </div>
   );

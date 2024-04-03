@@ -192,7 +192,11 @@ export default function KeyCalculator() {
     if (singable == false) {
       return "Song is Unsingable";
     }
-    let newKey = keyDictionary.get(selectedSong.originalKey) + highCalculation;
+    let rangeTotal = rangeVocalist - rangeSong;
+    let newKey =
+      keyDictionary.get(selectedSong.originalKey) +
+      highCalculation -
+      Math.floor(rangeTotal / 2);
     newKey = ((newKey % 12) + 12) % 12;
     return valueDictionary.get(newKey);
   };

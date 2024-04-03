@@ -9,18 +9,27 @@ export default function DropdownSelect(props) {
         const c = props.data?.find((x) => {
           if (x.id == undefined) return null;
           else if (x.id == e.target.value) {
-            console.log(x);
             props.setSelection(x);
           }
         });
       }}
     >
       <option>Select Your Vocalist</option>
-      {props.data.map((vocalist) => (
-        <option key={vocalist.id} value={vocalist.id}>
-          {vocalist.name}
-        </option>
-      ))}
+      {props.data
+        .sort(function (a, b) {
+          if (a.name < b.name) {
+            return -1;
+          }
+          if (a.name > b.name) {
+            return 1;
+          }
+          return 0;
+        })
+        .map((vocalist) => (
+          <option key={vocalist.id} value={vocalist.id}>
+            {vocalist.name}
+          </option>
+        ))}
     </select>
   );
 }
