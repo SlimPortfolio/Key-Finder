@@ -1,19 +1,18 @@
 {
   "files": {
     "main.css": "/Key-Finder/static/css/main.289ab530.css",
-    "main.js": "/Key-Finder/static/js/main.05465468.js",
+    "main.js": "/Key-Finder/static/js/main.f6353ac4.js",
     "static/js/453.bc7b6e37.chunk.js": "/Key-Finder/static/js/453.bc7b6e37.chunk.js",
     "static/media/slim-image.jpg": "/Key-Finder/static/media/slim-image.664a21f19825be5af2e1.jpg",
     "static/media/SweetSpot Logo.png": "/Key-Finder/static/media/SweetSpot Logo.6837670e5eb6fb7904e3.png",
     "static/media/SweetSpot-white.png": "/Key-Finder/static/media/SweetSpot-white.26ebf8ad6fdb2daa0652.png",
-    "static/media/logo.svg": "/Key-Finder/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/Key-Finder/index.html",
     "main.289ab530.css.map": "/Key-Finder/static/css/main.289ab530.css.map",
-    "main.05465468.js.map": "/Key-Finder/static/js/main.05465468.js.map",
+    "main.f6353ac4.js.map": "/Key-Finder/static/js/main.f6353ac4.js.map",
     "453.bc7b6e37.chunk.js.map": "/Key-Finder/static/js/453.bc7b6e37.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.289ab530.css",
-    "static/js/main.05465468.js"
+    "static/js/main.f6353ac4.js"
   ]
 }
