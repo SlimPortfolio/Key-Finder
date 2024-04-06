@@ -6,7 +6,7 @@ export default function Header() {
   return (
     <div className="header">
       <div className="header-left">
-        <img src={WhiteLogo}></img>
+        <img src={WhiteLogo} alt="sweetspot-logo-white"></img>
       </div>
       <div className="header-right">
         <Link to="/Key-Finder" className="header-link">
