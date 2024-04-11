@@ -299,7 +299,22 @@ export default function KeyCalculator() {
         {!customToggle ? (
           <DropdownSelect data={userData} setSelection={setSelectedVocalist} />
         ) : (
-          <h1>NEW COMPONTENT</h1>
+          <div>
+            <input placeholder="Type your name" className="custom-name"></input>
+            <select className="custom-range">
+              <option>Low</option>
+              <option>A1</option>
+              <option>A1</option>
+              <option>A1</option>
+            </select>
+            <select className="custom-range">
+              <option>High</option>
+              <option>A1</option>
+              <option>A1</option>
+              <option>A1</option>
+            </select>
+            {/* add a component where you could click and drag your range */}
+          </div>
         )}
         <br></br>
         <input

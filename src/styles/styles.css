@@ -199,3 +199,14 @@
 .about-container p {
   font-size: 20px;
 }
+
+.custom-name {
+  width: 235px;
+  box-sizing: border-box;
+  font-size: 22px;
+}
+
+.custom-range {
+  width: 70px;
+  font-size: 22px;
+}
