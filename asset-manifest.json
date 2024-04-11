@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/Key-Finder/static/css/main.289ab530.css",
-    "main.js": "/Key-Finder/static/js/main.f6353ac4.js",
+    "main.css": "/Key-Finder/static/css/main.8303dd7e.css",
+    "main.js": "/Key-Finder/static/js/main.745ad2e9.js",
     "static/js/453.bc7b6e37.chunk.js": "/Key-Finder/static/js/453.bc7b6e37.chunk.js",
     "static/media/slim-image.jpg": "/Key-Finder/static/media/slim-image.664a21f19825be5af2e1.jpg",
     "static/media/SweetSpot Logo.png": "/Key-Finder/static/media/SweetSpot Logo.6837670e5eb6fb7904e3.png",
     "static/media/SweetSpot-white.png": "/Key-Finder/static/media/SweetSpot-white.26ebf8ad6fdb2daa0652.png",
     "index.html": "/Key-Finder/index.html",
-    "main.289ab530.css.map": "/Key-Finder/static/css/main.289ab530.css.map",
-    "main.f6353ac4.js.map": "/Key-Finder/static/js/main.f6353ac4.js.map",
+    "main.8303dd7e.css.map": "/Key-Finder/static/css/main.8303dd7e.css.map",
+    "main.745ad2e9.js.map": "/Key-Finder/static/js/main.745ad2e9.js.map",
     "453.bc7b6e37.chunk.js.map": "/Key-Finder/static/js/453.bc7b6e37.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.289ab530.css",
-    "static/js/main.f6353ac4.js"
+    "static/css/main.8303dd7e.css",
+    "static/js/main.745ad2e9.js"
   ]
 }
