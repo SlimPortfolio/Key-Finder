@@ -161,6 +161,10 @@ export default function KeyCalculator() {
   const handleChange = (value) => {
     setInput(value);
   };
+  const [customToggle, setCustomToggle] = useState(false);
+  const handleToggleChange = (value) => {
+    setCustomToggle(!customToggle);
+  };
 
   //helper functions
   let quantNote = function (note) {
@@ -284,7 +288,19 @@ export default function KeyCalculator() {
         />
         <br></br>
         <label>Select A Vocalist</label>
-        <DropdownSelect data={userData} setSelection={setSelectedVocalist} />
+        <div>
+          <span>Custom Vocalist</span>
+          <input
+            type="checkbox"
+            className="custom-vocalist-toggle"
+            onChange={handleToggleChange}
+          ></input>
+        </div>
+        {!customToggle ? (
+          <DropdownSelect data={userData} setSelection={setSelectedVocalist} />
+        ) : (
+          <h1>NEW COMPONTENT</h1>
+        )}
         <br></br>
         <input
           className="submit-button"
