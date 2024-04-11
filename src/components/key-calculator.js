@@ -116,6 +116,12 @@ export default function KeyCalculator() {
       highNote: "E5",
       lowNote: "B3",
     },
+    {
+      id: 6,
+      name: "David Dong",
+      highNote: "E5",
+      lowNote: "G3",
+    },
   ];
 
   //Dictionary of Keys and Their Values
@@ -219,6 +225,11 @@ export default function KeyCalculator() {
     } else {
       document.querySelector("span.solution-text").innerHTML =
         "Please fill out all information for recommended key";
+      document.querySelector("span.solution").innerHTML = "";
+      document.querySelector("p.solution-song").innerHTML = "";
+      document
+        .querySelector("span.solution")
+        .classList.remove("solution-background");
     }
   };
 
@@ -230,12 +241,18 @@ export default function KeyCalculator() {
       "search-bar-results",
       "search-bar-results-shown"
     );
+    setSelectedSong("");
+    setInput("");
   };
   window.addEventListener("click", function (e) {
     var dropdown = document.querySelector("div.search-bar-results-shown");
     var input = document.querySelector("input.search-bar");
     if (input === null || dropdown === null) return;
-    if (!input.contains(e.target) && !dropdown.contains(e.target)) {
+    if (
+      !input.contains(e.target) &&
+      !dropdown.contains(e.target) &&
+      selectedSong
+    ) {
       dropdown.classList.replace(
         "search-bar-results-shown",
         "search-bar-results"
@@ -263,6 +280,7 @@ export default function KeyCalculator() {
           input={input}
           setInput={setInput}
           setSelection={setSelectedSong}
+          selection={selectedSong}
         />
         <br></br>
         <label>Select A Vocalist</label>

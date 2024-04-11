@@ -117,6 +117,16 @@
   font-size: 22px;
 }
 
+.search-bar-selected {
+  width: 375px;
+  box-sizing: border-box;
+  font-size: 22px;
+}
+
+.search-bar-selected:hover {
+  cursor: pointer;
+}
+
 .search-bar-results {
   width: 375px;
   background-color: wheat;

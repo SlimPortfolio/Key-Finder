@@ -18,10 +18,12 @@ export default function SearchSelect(props) {
             const searchTerm = props.input.toLowerCase();
             const fullName = item.songName.toLowerCase();
             const check = fullName.search(searchTerm);
-            if (check === -1) {
+            if (check !== -1 && props.selection) {
               return false;
+            } else if (check !== -1) {
+              return true && fullName;
             } else {
-              return true && fullName !== searchTerm;
+              return false;
             }
           })
           .map((item) => (
