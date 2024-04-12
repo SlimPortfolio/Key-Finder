@@ -164,6 +164,7 @@ export default function KeyCalculator() {
   const [customToggle, setCustomToggle] = useState(false);
   const handleToggleChange = (value) => {
     setCustomToggle(!customToggle);
+    setSelectedVocalist("");
   };
 
   //helper functions
@@ -252,11 +253,7 @@ export default function KeyCalculator() {
     var dropdown = document.querySelector("div.search-bar-results-shown");
     var input = document.querySelector("input.search-bar");
     if (input === null || dropdown === null) return;
-    if (
-      !input.contains(e.target) &&
-      !dropdown.contains(e.target) &&
-      selectedSong
-    ) {
+    if (!input.contains(e.target) && !dropdown.contains(e.target)) {
       dropdown.classList.replace(
         "search-bar-results-shown",
         "search-bar-results"
