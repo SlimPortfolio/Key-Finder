@@ -3,7 +3,7 @@ export default function DropdownSelect(props) {
   //this component allows a user to pass through a list of data, and allows a selection function to be passed back
   return (
     <select
-      className="calculator-dropdown"
+      className={props.inputClass}
       id="vocalistName"
       onChange={(e) => {
         const c = props.data?.find((x) => {

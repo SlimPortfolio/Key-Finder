@@ -294,7 +294,11 @@ export default function KeyCalculator() {
           ></input>
         </div>
         {!customToggle ? (
-          <DropdownSelect data={userData} setSelection={setSelectedVocalist} />
+          <DropdownSelect
+            data={userData}
+            setSelection={setSelectedVocalist}
+            inputClass="calculator-dropdown"
+          />
         ) : (
           <div>
             <input placeholder="Type your name" className="custom-name"></input>
