@@ -262,6 +262,7 @@ export default function KeyCalculator() {
   const [customToggle, setCustomToggle] = useState(false);
   const handleToggleChange = (value) => {
     setCustomToggle(!customToggle);
+    setSelectedVocalist("");
   };
   const [customLow, setCustomLow] = useState();
   const [customHigh, setCustomHigh] = useState();
