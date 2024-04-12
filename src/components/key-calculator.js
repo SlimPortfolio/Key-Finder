@@ -1,5 +1,5 @@
 import "../styles/styles.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SearchSelect from "./search-select-results";
 import DropdownSelect from "./select-dropdown";
 
@@ -262,9 +262,30 @@ export default function KeyCalculator() {
   const [customToggle, setCustomToggle] = useState(false);
   const handleToggleChange = (value) => {
     setCustomToggle(!customToggle);
-    setSelectedVocalist("");
+  };
+  const [customLow, setCustomLow] = useState();
+  const [customHigh, setCustomHigh] = useState();
+  const [customName, setCustomName] = useState();
+  const handleCustomLow = (event) => {
+    setCustomLow(event.target.value);
+  };
+  const handleCustomHigh = (event) => {
+    setCustomHigh(event.target.value);
+  };
+  const handleCustomName = (event) => {
+    setCustomName(event.target.value);
   };
 
+  const customVocalist = {
+    name: customName,
+    highNote: customHigh,
+    lowNote: customLow,
+  };
+
+  useEffect(() => {
+    console.log("custom name is: " + customName);
+    setSelectedVocalist(customVocalist);
+  }, [customName, customHigh, customLow]);
   //helper functions
   let quantNote = function (note) {
     let octave = note.charAt(note.length - 1);
@@ -399,14 +420,18 @@ export default function KeyCalculator() {
           />
         ) : (
           <div>
-            <input placeholder="Type your name" className="custom-name"></input>
-            <select className="custom-range">
+            <input
+              placeholder="Type your name"
+              className="custom-name"
+              onChange={handleCustomName}
+            ></input>
+            <select className="custom-range" onChange={handleCustomLow}>
               <option hidden>Low</option>
               {notes.map((note) => (
                 <option>{note}</option>
               ))}
             </select>
-            <select className="custom-range">
+            <select className="custom-range" onChange={handleCustomHigh}>
               <option hidden>High</option>
               {notes.map((note) => (
                 <option>{note}</option>
