@@ -1,3 +1,4 @@
+//Song Data
 export const data = [
   {
     id: 1,
@@ -117,6 +118,7 @@ export const userData = [
   },
 ];
 
+//list of piano notes
 export const notes = [
   "A0",
   "A#0",
@@ -214,3 +216,33 @@ export const notes = [
   "F#8",
   "G8",
 ];
+
+//Dictionary of Keys and Their Values
+export let keyDictionary = new Map();
+keyDictionary.set("C", 0);
+keyDictionary.set("C#", 1);
+keyDictionary.set("D", 2);
+keyDictionary.set("D#", 3);
+keyDictionary.set("E", 4);
+keyDictionary.set("F", 5);
+keyDictionary.set("F#", 6);
+keyDictionary.set("G", 7);
+keyDictionary.set("G#", 8);
+keyDictionary.set("A", 9);
+keyDictionary.set("A#", 10);
+keyDictionary.set("B", 11);
+
+//Dictionary of values and their keys
+export let valueDictionary = new Map();
+valueDictionary.set(0, "C");
+valueDictionary.set(1, "C#");
+valueDictionary.set(2, "D");
+valueDictionary.set(3, "D#");
+valueDictionary.set(4, "E");
+valueDictionary.set(5, "F");
+valueDictionary.set(6, "F#");
+valueDictionary.set(7, "G");
+valueDictionary.set(8, "G#");
+valueDictionary.set(9, "A");
+valueDictionary.set(10, "A#");
+valueDictionary.set(11, "B");

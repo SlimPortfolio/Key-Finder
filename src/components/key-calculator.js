@@ -2,38 +2,9 @@ import "../styles/styles.css";
 import { useEffect, useState } from "react";
 import SearchSelect from "./search-select-results";
 import DropdownSelect from "./select-dropdown";
-import { data, userData, notes } from "../info";
+import CustomVocalist from "./custom-vocalist";
+import { data, userData, notes, keyDictionary, valueDictionary } from "../info";
 export default function KeyCalculator() {
-  //Dictionary of Keys and Their Values
-  let keyDictionary = new Map();
-  keyDictionary.set("C", 0);
-  keyDictionary.set("C#", 1);
-  keyDictionary.set("D", 2);
-  keyDictionary.set("D#", 3);
-  keyDictionary.set("E", 4);
-  keyDictionary.set("F", 5);
-  keyDictionary.set("F#", 6);
-  keyDictionary.set("G", 7);
-  keyDictionary.set("G#", 8);
-  keyDictionary.set("A", 9);
-  keyDictionary.set("A#", 10);
-  keyDictionary.set("B", 11);
-
-  //Dictionary of values and their keys
-  let valueDictionary = new Map();
-  valueDictionary.set(0, "C");
-  valueDictionary.set(1, "C#");
-  valueDictionary.set(2, "D");
-  valueDictionary.set(3, "D#");
-  valueDictionary.set(4, "E");
-  valueDictionary.set(5, "F");
-  valueDictionary.set(6, "F#");
-  valueDictionary.set(7, "G");
-  valueDictionary.set(8, "G#");
-  valueDictionary.set(9, "A");
-  valueDictionary.set(10, "A#");
-  valueDictionary.set(11, "B");
-
   //selected song state observers
   const [selectedSong, setSelectedSong] = useState();
   const [selectedVocalist, setSelectedVocalist] = useState();
@@ -41,6 +12,8 @@ export default function KeyCalculator() {
   const handleChange = (value) => {
     setInput(value);
   };
+
+  //handling custom inputs
   const [customToggle, setCustomToggle] = useState(false);
   const handleToggleChange = (value) => {
     setCustomToggle(!customToggle);
@@ -58,18 +31,19 @@ export default function KeyCalculator() {
   const handleCustomName = (event) => {
     setCustomName(event.target.value);
   };
-
+  //custom vocalist object
   const customVocalist = {
     name: customName,
     highNote: customHigh,
     lowNote: customLow,
   };
-
+  //updating custom vocalist state
   useEffect(() => {
     console.log("custom name is: " + customName);
     setSelectedVocalist(customVocalist);
   }, [customName, customHigh, customLow]);
-  //helper functions
+
+  //helper functions for key calculation
   let quantNote = function (note) {
     let octave = note.charAt(note.length - 1);
     let value =
@@ -93,6 +67,8 @@ export default function KeyCalculator() {
     return result;
   };
 
+  //if the song is not singable, it will return as such, otherwise it will calculate the excess range of the singer compared to the song
+  //then calculate a new key and make a small adjustment to it sits near the middle
   let keyCalculation = function () {
     let highNoteSong = selectedSong.highNote;
     let lowNoteSong = selectedSong.lowNote;
@@ -114,6 +90,7 @@ export default function KeyCalculator() {
     return valueDictionary.get(newKey);
   };
 
+  //on submit, if all fields have been filled in, result will be shown. CSS classes are toggled to show/hide sections.
   let submitButton = function () {
     if (
       selectedSong &&
@@ -151,6 +128,7 @@ export default function KeyCalculator() {
     setSelectedSong("");
     setInput("");
   };
+  //hide search bar results if user clicks away from the box
   window.addEventListener("click", function (e) {
     var dropdown = document.querySelector("div.search-bar-results-shown");
     var input = document.querySelector("input.search-bar");
@@ -202,26 +180,12 @@ export default function KeyCalculator() {
             inputClass="calculator-dropdown"
           />
         ) : (
-          <div>
-            <input
-              placeholder="Type your name"
-              className="custom-name"
-              onChange={handleCustomName}
-            ></input>
-            <select className="custom-range" onChange={handleCustomLow}>
-              <option hidden>Low</option>
-              {notes.map((note) => (
-                <option>{note}</option>
-              ))}
-            </select>
-            <select className="custom-range" onChange={handleCustomHigh}>
-              <option hidden>High</option>
-              {notes.map((note) => (
-                <option>{note}</option>
-              ))}
-            </select>
-            {/* add a component where you could click and drag your range */}
-          </div>
+          <CustomVocalist
+            handleName={handleCustomName}
+            handleLow={handleCustomLow}
+            handleHigh={handleCustomHigh}
+            notes={notes}
+          />
         )}
         <br></br>
         <input
