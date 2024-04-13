@@ -77,6 +77,34 @@ export const data = [
     highNote: "C5",
     originalKey: "G",
   },
+  {
+    id: 12,
+    songName: "Great Are You Lord",
+    lowNote: "E4",
+    highNote: "F#5",
+    originalKey: "A",
+  },
+  {
+    id: 13,
+    songName: "Filled With Your Glory",
+    lowNote: "D#4",
+    highNote: "D#5",
+    originalKey: "G#",
+  },
+  {
+    id: 14,
+    songName: "This is Amazing Grace",
+    lowNote: "A#4",
+    highNote: "G5",
+    originalKey: "A#",
+  },
+  {
+    id: 15,
+    songName: "Lord I Need You",
+    lowNote: "B3",
+    highNote: "F#5",
+    originalKey: "B",
+  },
 ];
 //Vocalist Data
 export const userData = [
