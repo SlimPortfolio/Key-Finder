@@ -105,6 +105,27 @@ export const data = [
     highNote: "F#5",
     originalKey: "B",
   },
+  {
+    id: 16,
+    songName: "Called Me Higher",
+    lowNote: "G#3",
+    highNote: "C#5",
+    originalKey: "C#",
+  },
+  {
+    id: 17,
+    songName: "Yet Not I But Through Christ in Me",
+    lowNote: "A3",
+    highNote: "C5",
+    originalKey: "C",
+  },
+  {
+    id: 18,
+    songName: "Worthy of it All",
+    lowNote: "C4",
+    highNote: "G5",
+    originalKey: "C",
+  },
 ];
 //Vocalist Data
 export const userData = [
