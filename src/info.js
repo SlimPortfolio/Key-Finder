@@ -93,7 +93,7 @@ export const data = [
   },
   {
     id: 14,
-    songName: "This is Amazing Grace",
+    songName: "This is Amazing Grace?",
     lowNote: "A#4",
     highNote: "G5",
     originalKey: "A#",
@@ -125,6 +125,41 @@ export const data = [
     lowNote: "C4",
     highNote: "G5",
     originalKey: "C",
+  },
+  {
+    id: 19,
+    songName: "Gratitude",
+    lowNote: "B3",
+    highNote: "F#5",
+    originalKey: "B",
+  },
+  {
+    id: 20,
+    songName: "Great Things?",
+    lowNote: "B4",
+    highNote: "F#5",
+    originalKey: "B",
+  },
+  {
+    id: 21,
+    songName: "Cornerstone",
+    lowNote: "C4",
+    highNote: "G5",
+    originalKey: "C",
+  },
+  {
+    id: 22,
+    songName: "Holy Forever",
+    lowNote: "C4",
+    highNote: "G5",
+    originalKey: "C#",
+  },
+  {
+    id: 23,
+    songName: "Abide",
+    lowNote: "E3",
+    highNote: "A4",
+    originalKey: "D",
   },
 ];
 //Vocalist Data
