@@ -22,7 +22,6 @@ export default function About() {
         worship!
       </p>
       <img src={proPic} alt="profile-pic"></img>
-      <img src={ProPic} alt="profile-pic2"></img>
       <p>
         Here's how you can support me! You can support me by emailing any
         thoughts, suggestions, or song requests you'd like to see on this
