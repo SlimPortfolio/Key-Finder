@@ -1,5 +1,5 @@
 import "../styles/styles.css";
-import proPic from "../images/slim-image.png";
+import proPic from "../images/Slim-image.png";
 
 export default function About() {
   return (
@@ -22,6 +22,7 @@ export default function About() {
         worship!
       </p>
       <img src={proPic} alt="profile-pic"></img>
+      <img src={ProPic} alt="profile-pic2"></img>
       <p>
         Here's how you can support me! You can support me by emailing any
         thoughts, suggestions, or song requests you'd like to see on this
