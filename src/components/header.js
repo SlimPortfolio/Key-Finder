@@ -9,13 +9,13 @@ export default function Header() {
         <img src={WhiteLogo} alt="sweetspot-logo-white"></img>
       </div>
       <div className="header-right">
-        <Link to="/Key-Finder" className="header-link">
+        <Link to="/" className="header-link">
           Home
         </Link>
-        <Link to="/Key-Finder/app" className="header-link">
+        <Link to="/app" className="header-link">
           Key Finder App
         </Link>
-        <Link to="/Key-Finder/about" className="header-link">
+        <Link to="/about" className="header-link">
           About
         </Link>
       </div>

@@ -11,7 +11,7 @@ export default function Home() {
         a suitable key for their vocalist to sing a song in. Check out the app
         by clicking the button below.
       </p>
-      <Link to="/Key-Finder/app" className="link-button">
+      <Link to="/app" className="link-button">
         Key Finder
       </Link>
     </div>
