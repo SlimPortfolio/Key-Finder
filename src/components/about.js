@@ -21,7 +21,7 @@ export default function About() {
         you have to worry about the music, and the more you can focus on the
         worship!
       </p>
-      <img src={ProPic}></img>
+      <img src={ProPic} alt="profile-pic"></img>
       <p>
         Here's how you can support me! You can support me by emailing any
         thoughts, suggestions, or song requests you'd like to see on this
