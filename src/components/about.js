@@ -1,5 +1,5 @@
 import "../styles/styles.css";
-import ProPic from "../images/slim-image.jpg";
+import ProPic from "/devprojects/Key-Finder/src/images/slim-image.jpg";
 
 export default function About() {
   return (
