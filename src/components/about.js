@@ -1,5 +1,5 @@
 import "../styles/styles.css";
-import ProPic from "../images/slim-image.jpg";
+import ProPic from "../images/SlimImage.png";
 
 export default function About() {
   return (
