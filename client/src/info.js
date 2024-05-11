@@ -161,6 +161,20 @@ export const data = [
     highNote: "A4",
     originalKey: "D",
   },
+  {
+    id: 24,
+    songName: "Reckless Love",
+    lowNote: "G4",
+    highNote: "G5",
+    originalKey: "G",
+  },
+  {
+    id: 24,
+    songName: "Christ Be Magnified",
+    lowNote: "F#4",
+    highNote: "F#5",
+    originalKey: "A",
+  },
 ];
 //Vocalist Data
 export const userData = [
