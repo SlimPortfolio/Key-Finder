@@ -175,6 +175,13 @@ export const data = [
     highNote: "F#5",
     originalKey: "A",
   },
+  {
+    id: 26,
+    songName: "Good Good Father",
+    lowNote: "D3",
+    highNote: "D4",
+    originalKey: "A",
+  },
 ];
 //Vocalist Data
 export const userData = [
