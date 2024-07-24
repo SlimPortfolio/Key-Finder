@@ -182,6 +182,13 @@ export const data = [
     highNote: "D4",
     originalKey: "A",
   },
+  {
+    id: 27,
+    songName: "How Great is Our God",
+    lowNote: "F4",
+    highNote: "F#5",
+    originalKey: "C#",
+  },
 ];
 //Vocalist Data
 export const userData = [
