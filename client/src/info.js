@@ -189,6 +189,13 @@ export const data = [
     highNote: "F#5",
     originalKey: "C#",
   },
+  {
+    id:28,
+    songName: "Who You Say I Am",
+    lowNote: "F#3",
+    highNote: "B4",
+    originalKey: "F#",
+  },
 ];
 //Vocalist Data
 export const userData = [
