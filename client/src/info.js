@@ -190,11 +190,39 @@ export const data = [
     originalKey: "C#",
   },
   {
-    id:28,
+    id: 28,
     songName: "Who You Say I Am",
     lowNote: "F#3",
     highNote: "B4",
     originalKey: "F#",
+  },
+  {
+    id: 29,
+    songName: "Christ Be All Around Me",
+    lowNote: "F#3",
+    highNote: "G4",
+    originalKey: "D",
+  },
+  {
+    id: 30,
+    songName: "Battle Belongs",
+    lowNote: "C#3",
+    highNote: "A#4",
+    originalKey: "C#",
+  },
+  {
+    id: 31,
+    songName: "No Longer Slaves",
+    lowNote: "G3",
+    highNote: "D5",
+    originalKey: "A#",
+  },
+  {
+    id: 32,
+    songName: "Life Defined",
+    lowNote: "G3",
+    highNote: "G4",
+    originalKey: "C",
   },
 ];
 //Vocalist Data
