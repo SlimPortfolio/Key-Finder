@@ -224,6 +224,13 @@ export const data = [
     highNote: "G4",
     originalKey: "C",
   },
+  {
+    id: 33,
+    songName: "King of Kings",
+    lowNote: "C#4",
+    highNote: "D5",
+    originalKey: "D",
+  },
 ];
 //Vocalist Data
 export const userData = [
