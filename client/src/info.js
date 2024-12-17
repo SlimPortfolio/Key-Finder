@@ -231,6 +231,13 @@ export const data = [
     highNote: "D5",
     originalKey: "D",
   },
+  {
+    id: 34,
+    songName: "Lion and the Lamb",
+    lowNote: "A3",
+    highNote: "G4",
+    originalKey: "C",
+  },
 ];
 //Vocalist Data
 export const userData = [
