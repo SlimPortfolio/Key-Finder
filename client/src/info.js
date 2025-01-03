@@ -238,6 +238,13 @@ export const data = [
     highNote: "G4",
     originalKey: "C",
   },
+  {
+    id: 35,
+    songName: "How Deep the Father's Love For Us",
+    lowNote: "D4",
+    highNote: "D5",
+    originalKey: "G",
+  },
 ];
 //Vocalist Data
 export const userData = [
