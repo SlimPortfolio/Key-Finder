@@ -245,6 +245,34 @@ export const data = [
     highNote: "D5",
     originalKey: "G",
   },
+  {
+    id: 36,
+    songName: "Indescribable",
+    lowNote: "A#4",
+    highNote: "F#5",
+    originalKey: "B",
+  },
+  {
+    id: 37,
+    songName: "Jesus Messiah",
+    lowNote: "B4",
+    highNote: "F#5",
+    originalKey: "B",
+  },
+  {
+    id: 38,
+    songName: "Goodness of God",
+    lowNote: "G#3",
+    highNote: "C#5",
+    originalKey: "G#",
+  },
+  {
+    id: 39,
+    songName: "Jesus We Love You",
+    lowNote: "D#4",
+    highNote: "F#5",
+    originalKey: "B",
+  },
 ];
 //Vocalist Data
 export const userData = [
