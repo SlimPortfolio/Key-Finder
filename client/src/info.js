@@ -273,6 +273,13 @@ export const data = [
     highNote: "F#5",
     originalKey: "B",
   },
+  {
+    id: 40,
+    songName: "10,000 Reasons",
+    lowNote: "D4",
+    highNote: "F#5",
+    originalKey: "G",
+  },
 ];
 //Vocalist Data
 export const userData = [
