@@ -331,6 +331,12 @@ export const userData = [
     highNote: "D#5",
     lowNote: "G3",
   },
+  {
+    id: 9,
+    name: "Austin Li",
+    highNote: "F5",
+    lowNote: "B3",
+  },
 ];
 
 //list of piano notes
